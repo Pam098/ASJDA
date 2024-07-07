@@ -16,8 +16,7 @@ import models
 
 random.seed(0)
 
-# DL
-#存数据集路径
+# change the path
 dataset_path = {'seed4': '/yourpath', 'seed3': '/yourpath','deap':'/yourpath'}
 
 '''
