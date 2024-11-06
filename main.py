@@ -165,11 +165,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='ASJDA parameters')
     parser.add_argument('--dataset', type=str, default='seed3',
                         help='the dataset used for ASJDA, "seed3" or "seed4"')
-    parser.add_argument('--batch_size', type=int, default=128,
+    parser.add_argument('--batch_size', type=int, default=32,
                         help='size for one batch, integer')
     parser.add_argument('--epoch', type=int, default=200,
                         help='training epoch, integer')
-    parser.add_argument('--lr', type=float, default=0.01, help='learning rate')
+    parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
     args = parser.parse_args()
     dataset_name = args.dataset
     bn = args.norm_type
