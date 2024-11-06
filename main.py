@@ -77,9 +77,10 @@ class ASJDA():
 
                 cls_loss, mmd_loss, disc_loss, lsd_loss = self.model(source_data, number_of_source=len(
                     source_iters), data_tgt=target_data, label_src=source_label, mark=j)
-                gamma = 2 / (1 + math.exp(-10 * (i) / (self.iteration))) - 1
-                beta = gamma/100
-                loss = cls_loss + gamma * mmd_loss + beta * (disc_loss + lsd_loss)
+                alpha = 2 / (1 + math.exp(-10 * (i) / (self.iteration))) - 1
+                beta = alpha/100
+                gamma = alpha -1
+                loss = cls_loss + alpha * mmd_loss + beta * disc_loss + gamma * lsd_loss
                 loss.backward()
                 optimizer.step()
 
