@@ -251,9 +251,9 @@ if __name__ == '__main__':
 		                js_select_1.append((js_divergence, select_idx))
                 if not js_select_1:
                     ks_select1 = [(js[i], train_idxs[i]) for i in range(len( js))]
-	                sorted_js1 = sorted(ks_select1, key=lambda x: x[0])
-	                min_values1 = sorted_js1[:7]
-	                select_idxs1 = [item[1] for item in min_values1]
+	            sorted_js1 = sorted(ks_select1, key=lambda x: x[0])
+	            min_values1 = sorted_js1[:7]
+	            select_idxs1 = [item[1] for item in min_values1]
                 else:
                     sorted_tuples1 = sorted(js_select_1, key=lambda x: x[0])
                     select_idxs1 = [tup[1] for tup in sorted_tuples1]
@@ -285,9 +285,9 @@ if __name__ == '__main__':
                     js_select.append((js_divergence, train_idxs[idx]))
             if not js_select:
                 ks_select = [(js[i], train_idxs[i]) for i in range(len( js))]
-	            sorted_js = sorted(ks_select, key=lambda x: x[0])
-	            min_values = sorted_js[:7]
-	            select_idxs = [item[1] for item in min_values]
+	        sorted_js = sorted(ks_select, key=lambda x: x[0])
+	        min_values = sorted_js[:7]
+	        select_idxs = [item[1] for item in min_values]
             else:
                 sorted_tuples = sorted(js_select, key=lambda x: x[0])
                 select_idxs = [tup[1] for tup in sorted_tuples]
