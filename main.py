@@ -222,6 +222,7 @@ if __name__ == '__main__':
             select_idxs1 = []
             sorted_tuples1 = []
             ks_select = []
+            ks_select1 = []
             select_idxs_2 = []
             t_acc_pairs = []
             target_data, target_label = utils.get_one_data_and_label(data_tmp, label_tmp, session_id_main, subject_id_main)
@@ -246,12 +247,13 @@ if __name__ == '__main__':
                 select_idxs1=[]
                 for idx, js_divergence in enumerate(js):
                     if js_divergence < threshold:
-                        js_select_1.append((js_divergence, idx))
+                        select_idx= train_idxs[idx]
+		                js_select_1.append((js_divergence, select_idx))
                 if not js_select_1:
-                    sorted_js1 = sorted(js)
-                    min_values1 = sorted_js1[:7]
-                    for value in min_values1:
-                        select_idxs1.append(js.index(value))
+                    ks_select1 = [(js[i], train_idxs[i]) for i in range(len( js))]
+	                sorted_js1 = sorted(ks_select1, key=lambda x: x[0])
+	                min_values1 = sorted_js1[:7]
+	                select_idxs1 = [item[1] for item in min_values1]
                 else:
                     sorted_tuples1 = sorted(js_select_1, key=lambda x: x[0])
                     select_idxs1 = [tup[1] for tup in sorted_tuples1]
@@ -277,17 +279,17 @@ if __name__ == '__main__':
             js_select = []
             sorted_tuples = []
             select_idxs=[]
+            ks_select=[]
             for idx, js_divergence in enumerate(js):
                 if js_divergence < t_max:
-                    js_select.append((js_divergence, idx))
+                    js_select.append((js_divergence, train_idxs[idx]))
             if not js_select:
-                sorted_js = sorted(js)
-                min_values = sorted_js[:7]
-                for value in min_values:
-                    select_idxs.append(js.index(value))
+                ks_select = [(js[i], train_idxs[i]) for i in range(len( js))]
+	            sorted_js = sorted(ks_select, key=lambda x: x[0])
+	            min_values = sorted_js[:7]
+	            select_idxs = [item[1] for item in min_values]
             else:
                 sorted_tuples = sorted(js_select, key=lambda x: x[0])
-
                 select_idxs = [tup[1] for tup in sorted_tuples]
 
             acc= cross_subject(data_tmp, label_tmp, session_id_main, subject_id_main, category_number,
